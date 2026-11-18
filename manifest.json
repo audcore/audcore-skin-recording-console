@@ -38,8 +38,8 @@
   "preview": "assets/preview.png",
   "kind": "web",
   "license": "MIT",
-  "repository": "https://github.com/audcore/audcore-skin-studio-v2",
-  "description": "Studio V2，声核独立网页皮肤",
+  "repository": "https://github.com/audcore/audcore-skin-recording-console",
+  "description": "灰色录音台面板与蓝色通道标记，提供效果器插槽、发送、长推子和侧栏通道导航。",
   "build": {
     "schema": 1,
     "recipe": "web-static",
