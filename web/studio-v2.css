@@ -1,0 +1,467 @@
+@import url("./studio.css");
+
+:root[data-skin="studio-v2"] {
+  --studio-deck: #26282b;
+  --studio-panel: #3d3f42;
+  --studio-accent: #25a0f2;
+  --studio-muted: #adb0b2;
+  --studio-v2-window-rim: #53595f;
+  --studio-v2-rail: #393b3d;
+  --studio-v2-edge: #121416;
+  --studio-v2-panel-rim: #565a5d;
+  --studio-v2-slot-ink: #bdc1c4;
+  --studio-v2-grid-face: #191c1e;
+  --studio-v2-grid-major: #1b3140;
+  --studio-v2-grid-frame: #364957;
+  --studio-v2-secondary-grid-face: #1c1e20;
+  --studio-v2-secondary-grid-line: #172332;
+  --studio-v2-secondary-grid-frame: #1b2f4a;
+  --studio-v2-grid-line: #162935;
+  --studio-v2-meter-tick: #36596c;
+  --studio-v2-slot-well: #2d3033;
+  --studio-v2-send-rest: #383a3c;
+  --studio-v2-track: #2f3236;
+  --studio-v2-track-center: #212324;
+  --studio-v2-track-mark: #494d50;
+  --studio-v2-footer: #222425;
+}
+
+:root[data-skin="studio-v2"][data-theme="light"] {
+  --studio-v2-window-rim: #8794a3;
+  --studio-v2-rail: #cfd8e2;
+  --studio-v2-edge: #88929d;
+  --studio-v2-panel-rim: #f1f3f5;
+  --studio-v2-slot-ink: #263343;
+  --studio-v2-grid-face: #c3ccd6;
+  --studio-v2-grid-major: #8199ae;
+  --studio-v2-grid-frame: #738598;
+  --studio-v2-secondary-grid-face: #bac6d2;
+  --studio-v2-secondary-grid-line: #93a6bb;
+  --studio-v2-secondary-grid-frame: #738598;
+  --studio-v2-grid-line: #a1b3c1;
+  --studio-v2-meter-tick: #63859b;
+  --studio-v2-slot-well: #d5dce4;
+  --studio-v2-send-rest: #aab7c4;
+  --studio-v2-track: #b0bac6;
+  --studio-v2-track-center: #8794a3;
+  --studio-v2-track-mark: #738598;
+  --studio-v2-footer: #c4cfd9;
+}
+
+[data-skin="studio-v2"] #skin-root {
+  box-sizing: border-box;
+  border: 1px solid var(--studio-v2-window-rim);
+}
+
+@media (min-width: 601px) {
+  [data-skin="studio-v2"] #skin-root { grid-template-columns: 57px minmax(0, 1fr); }
+  [data-skin="studio-v2"] .toolbar { height: 20px; }
+  [data-skin="studio-v2"] .toolbar button { height: 18px; }
+  [data-skin="studio-v2"] .toolbar .window-drag { line-height: 20px; }
+}
+
+[data-skin="studio-v2"] .studio-sidebar h1 { padding-inline: 4px; text-align: center; }
+
+[data-skin="studio-v2"] .studio-channel-jump {
+  grid-template-columns: 4px minmax(0, 1fr);
+  gap: 3px;
+  padding: 3px 3px 3px 4px;
+  font-size: 10px;
+}
+
+[data-skin="studio-v2"] .studio-channel-jump::before { width: 4px; height: 4px; }
+
+[data-skin="studio-v2"] .studio-channel-jump:hover { background: var(--studio-v2-rail); }
+
+[data-skin="studio-v2"] #channels {
+  height: 100%;
+  min-height: 583px;
+  gap: 0;
+  padding: 0;
+}
+
+[data-skin="studio-v2"] .channel {
+  /* Header, inserts, sends, section gap, I/O, controls, name, outer edge. */
+  grid-template: 3px 224px 53px 10px 18px 259px 14px 2px / repeat(2, minmax(0, 1fr));
+  flex: 0 0 83px;
+  width: 83px;
+  height: 583px;
+  gap: 0;
+  padding: 0 1px;
+  border: 0;
+  border-radius: 0;
+  box-shadow: inset 0 0 0 1px var(--studio-v2-edge);
+}
+
+[data-skin="studio-v2"] .channel[data-selected] { background: var(--channel-surface); }
+
+[data-skin="studio-v2"] .channel[data-selected] .name {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--studio-name-ink) 35%, transparent);
+}
+
+[data-skin="studio-v2"] .channel[data-align-right="true"] {
+  --channel-surface: var(--control-surface);
+}
+
+[data-skin="studio-v2"] main:has([data-studio-pinned]) { scroll-padding-right: 83px; }
+
+[data-skin="studio-v2"] .studio-slot-group,
+[data-skin="studio-v2"] .channel .controls,
+[data-skin="studio-v2"] .channel .name { grid-column: 1 / -1; }
+
+[data-skin="studio-v2"] .studio-slot-group {
+  grid-template-rows: 19px minmax(0, 1fr);
+  border-radius: 0;
+  background: transparent;
+}
+
+[data-skin="studio-v2"] .studio-inserts { grid-row: 2; }
+[data-skin="studio-v2"] .studio-sends { grid-row: 3; grid-template-rows: 20px minmax(0, 1fr); }
+
+[data-skin="studio-v2"] .studio-slot-header {
+  padding: 0 1px;
+  background: transparent;
+  font: 11px/1 "Segoe UI", "Microsoft YaHei", sans-serif;
+}
+
+[data-skin="studio-v2"] .studio-slot-header button { flex-basis: 14px; font-size: 14px; }
+
+[data-skin="studio-v2"] .channel :is(.effects, .sends) {
+  padding: 0;
+  gap: 1px;
+  scrollbar-width: none;
+}
+
+[data-skin="studio-v2"] .channel .effects > div {
+  padding: 0;
+  border-radius: 0;
+}
+
+[data-skin="studio-v2"] .channel .effects > [data-empty] {
+  height: 20px;
+  background: var(--studio-v2-slot-well);
+}
+
+[data-skin="studio-v2"] .channel .effects > [data-studio-primary] {
+  grid-template: 20px 63px / 16px minmax(0, 1fr);
+  height: 83px;
+  line-height: 20px;
+  color: var(--studio-v2-slot-ink);
+}
+
+[data-skin="studio-v2"] .channel .effects > [data-studio-primary]:nth-child(2) {
+  grid-template-rows: 20px 91px;
+  height: 111px;
+  --studio-v2-grid-face: var(--studio-v2-secondary-grid-face);
+  --studio-v2-grid-line: var(--studio-v2-secondary-grid-line);
+  --studio-v2-grid-major: var(--studio-v2-secondary-grid-line);
+  --studio-v2-grid-frame: var(--studio-v2-secondary-grid-frame);
+  --studio-v2-grid-x: 10px;
+  --studio-v2-grid-major-x: 20px;
+  --studio-v2-grid-y: 19px;
+}
+
+[data-skin="studio-v2"] .channel .effects > [data-studio-primary]:nth-child(n+3) {
+  grid-template-rows: 20px 27px;
+  height: 47px;
+}
+
+[data-skin="studio-v2"] .channel .effects [data-studio-effect-action] { line-height: 20px; }
+[data-skin="studio-v2"] .channel .effects [data-studio-effect-action="editor"] {
+  position: relative;
+  padding-right: 12px;
+}
+
+[data-skin="studio-v2"] .channel .effects [data-studio-effect-action="editor"]:hover { background: var(--studio-hover); }
+
+[data-skin="studio-v2"] .channel .effects [data-studio-effect-action="editor"]::after,
+.studio-v2-send-header button:last-child::after {
+  position: absolute;
+  top: 8px;
+  right: 4px;
+  width: 8px;
+  height: 5px;
+  background: currentColor;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  opacity: .65;
+  content: "";
+}
+
+[data-skin="studio-v2"] .studio-effect-value {
+  position: relative;
+  border: 1px solid var(--studio-v2-grid-frame);
+  padding: 0;
+  background:
+    repeating-linear-gradient(to right, transparent 0 calc(var(--studio-v2-grid-major-x, 8px) - 1px), var(--studio-v2-grid-major) calc(var(--studio-v2-grid-major-x, 8px) - 1px) var(--studio-v2-grid-major-x, 8px)),
+    repeating-linear-gradient(to right, transparent 0 calc(var(--studio-v2-grid-x, 3px) - 1px), var(--studio-v2-grid-line) calc(var(--studio-v2-grid-x, 3px) - 1px) var(--studio-v2-grid-x, 3px)),
+    repeating-linear-gradient(to bottom, transparent 0 calc(var(--studio-v2-grid-y, 15px) - 1px), var(--studio-v2-grid-line) calc(var(--studio-v2-grid-y, 15px) - 1px) var(--studio-v2-grid-y, 15px)),
+    var(--studio-v2-grid-face);
+  color: var(--studio-accent);
+  font-size: 9px;
+  line-height: 12px;
+  text-align: left;
+}
+
+[data-skin="studio-v2"] .studio-effect-value[data-measured] > span {
+  position: relative;
+  display: block;
+  padding-inline: 6px 56%;
+  overflow: hidden;
+  background: var(--studio-v2-grid-face);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-skin="studio-v2"] .studio-effect-value[data-measured] > span::after {
+  position: absolute;
+  inset: 5px 0 auto 44%;
+  height: 3px;
+  background: linear-gradient(to right, var(--studio-accent) var(--studio-fill), var(--studio-v2-slot-well) var(--studio-fill));
+  content: "";
+}
+
+[data-skin="studio-v2"] .channel .sends > .studio-v2-send {
+  height: 33px;
+  padding: 0;
+  border-radius: 0;
+  background: var(--studio-v2-slot-well);
+}
+
+.studio-v2-send .studio-v2-send-header {
+  display: grid;
+  padding: 0;
+  grid-template-columns: 16px minmax(0, 1fr);
+  height: 20px;
+  background: var(--studio-rack-slot);
+  color: var(--studio-v2-slot-ink);
+}
+
+.studio-v2-send[data-enabled="false"] .studio-v2-send-header { background: var(--studio-key-face); }
+
+.studio-v2-send-header button {
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: 11px/20px "Segoe UI", "Microsoft YaHei", sans-serif;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.studio-v2-send-header button:hover { background: var(--studio-hover); }
+.studio-v2-send-header button[aria-pressed="true"] { color: var(--studio-accent); }
+.studio-v2-send-header button:last-child { position: relative; padding-right: 12px; text-align: left; }
+
+[data-skin="studio-v2"] .studio-v2-send [role="slider"] {
+  box-sizing: border-box;
+  height: 13px;
+  position: relative;
+  padding: 6px 20px 0 0;
+  cursor: ew-resize;
+  touch-action: none;
+}
+
+.studio-v2-send [role="slider"]::after {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, var(--studio-accent) var(--studio-fill), var(--studio-v2-send-rest) var(--studio-fill));
+  content: "";
+}
+
+/* The grip is part of the gain control's hit area. */
+.studio-v2-send [role="slider"]::before {
+  position: absolute;
+  inset: 2px 7px 2px auto;
+  width: 9px;
+  background:
+    linear-gradient(currentColor, currentColor) 3px 0 / 1px 9px,
+    linear-gradient(currentColor, currentColor) 7px 2px / 1px 7px,
+    linear-gradient(currentColor, currentColor) 1px 2px / 5px 3px,
+    linear-gradient(currentColor, currentColor) 5px 5px / 4px 2px;
+  background-repeat: no-repeat;
+  color: var(--studio-v2-slot-ink);
+  content: "";
+}
+
+.studio-v2-send[data-enabled="false"] [role="slider"]::after { opacity: .45; }
+
+[data-skin="studio-v2"] .channel :is(.input, .studio-output) {
+  grid-row: 5;
+  margin: 0 1px 0 4px;
+  font-size: 9px;
+  line-height: 18px;
+}
+
+[data-skin="studio-v2"] .channel .studio-output { margin: 0 4px 0 1px; }
+
+[data-skin="studio-v2"] .channel .controls {
+  grid-row: 6;
+  position: relative;
+  display: block;
+  padding: 0;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--studio-v2-panel-rim) 32%, transparent);
+}
+
+[data-skin="studio-v2"] .studio-readout {
+  position: absolute;
+  inset: 0 4px auto;
+  height: 18px;
+}
+
+[data-skin="studio-v2"] .channel .value { background: transparent; font-size: 11px; }
+
+[data-skin="studio-v2"] .studio-mode { background: var(--studio-v2-track); }
+
+[data-skin="studio-v2"] .studio-toggles {
+  position: absolute;
+  inset: 22px 6px auto;
+  height: 42px;
+  gap: 1px;
+  padding: 1px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--studio-key-edge);
+}
+
+[data-skin="studio-v2"] .studio-toggles button {
+  border: 0;
+  border-radius: 1px;
+  box-shadow: inset 0 0 0 1px var(--studio-v2-panel-rim), inset 0 0 3px var(--studio-key-edge);
+  color: var(--studio-muted);
+  font-size: 12px;
+}
+
+[data-skin="studio-v2"] .studio-toggles button:is([aria-pressed="true"], [data-safe="true"]) { color: #14212c; }
+
+[data-skin="studio-v2"] .channel .meter {
+  position: absolute;
+  inset: 72px auto auto 16px;
+  width: 13px;
+  height: 142px;
+  border-radius: 0;
+  background: var(--studio-meter-well);
+}
+
+[data-skin="studio-v2"] .studio-meter-scale {
+  position: absolute;
+  inset: 72px auto auto 0;
+  z-index: 1;
+  width: 16px;
+  height: 142px;
+  pointer-events: none;
+  font: 8px/1 "Segoe UI", sans-serif;
+}
+
+[data-skin="studio-v2"] .channel .studio-meter-scale span {
+  inset: var(--studio-tick-y) 2px auto auto;
+  transform: translateY(-50%);
+}
+
+[data-skin="studio-v2"] .channel .studio-meter-scale span::after {
+  inset: 50% -13px auto auto;
+  width: 9px;
+  background: var(--studio-v2-meter-tick);
+  opacity: .7;
+}
+
+.studio-v2-fader-track {
+  position: absolute;
+  inset: 88px auto auto 33px;
+  width: 14px;
+  height: 126px;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--studio-v2-track-center), var(--studio-v2-track-center)) center top / 2px 109px no-repeat,
+    repeating-linear-gradient(to bottom, transparent 0 8px, var(--studio-v2-track-mark) 8px 9px, transparent 9px 15px),
+    var(--studio-v2-track);
+}
+
+[data-skin="studio-v2"] .channel .gain {
+  position: absolute;
+  inset: 68px auto auto 30px;
+  z-index: 1;
+  width: 20px;
+  height: 145px;
+  touch-action: none;
+}
+
+[data-skin="studio-v2"] .channel .gain::-webkit-slider-runnable-track { width: 100%; height: 100%; background: transparent; }
+
+[data-skin="studio-v2"] .channel .gain::-webkit-slider-thumb {
+  width: 18px;
+  height: 36px;
+  margin: 0 1px;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px #aeaeae, inset 0 0 3px #373737, 0 1px 2px #000b;
+  background: linear-gradient(#bebebe, #7c7c7c 6%, #f8f8f8 22%, #fff 44%, #898989 48% 51%, #fff 54% 79%, #b0b0b0 91%, #777 97%);
+}
+
+[data-skin="studio-v2"] .channel[data-align-right="true"] .gain::-webkit-slider-thumb {
+  background: linear-gradient(#2c6178, #61a0b8 17%, #7db7ca 48%, #c3e1e9 50%, #629db3 54%, #44829a 89%, #2c6178);
+}
+
+.studio-v2-peak,
+[data-skin="studio-v2"] .channel .controls > [data-control="overload"] {
+  position: absolute;
+  inset: 70px 3px auto auto;
+  width: 26px;
+  height: 13px;
+  color: var(--studio-accent);
+  font: 9px/13px "Segoe UI", sans-serif;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+[data-skin="studio-v2"] .channel .controls > [data-overload="true"] { color: white; }
+
+.studio-v2-index {
+  position: absolute;
+  inset: 218px auto auto 9px;
+  color: var(--studio-muted);
+  font: 11px/16px "Segoe UI", sans-serif;
+}
+
+[data-skin="studio-v2"] .channel .values {
+  position: absolute;
+  inset: 217px 4px auto auto;
+  display: flex;
+  gap: 1px;
+  height: 17px;
+}
+
+[data-skin="studio-v2"] .channel .values button {
+  width: 16px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--studio-muted);
+  font-size: 12px;
+}
+
+[data-skin="studio-v2"] .channel .values button:hover,
+[data-skin="studio-v2"] .channel .values button[aria-pressed="true"] { background: var(--studio-hover); }
+
+[data-skin="studio-v2"] .channel .effect-latency {
+  position: absolute;
+  inset: 237px 5px auto;
+  display: block;
+  height: 16px;
+  overflow: hidden;
+  background: var(--studio-v2-footer);
+  color: var(--studio-muted);
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: 10px/16px "Segoe UI", "Microsoft YaHei", sans-serif;
+}
+
+[data-skin="studio-v2"] .channel .name {
+  grid-row: 7;
+  border-radius: 0;
+  font: 11px/14px "Segoe UI", "Microsoft YaHei", sans-serif;
+}

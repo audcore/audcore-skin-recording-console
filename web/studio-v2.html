@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN" data-skin="studio-v2">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Studio V2</title>
+  <link rel="stylesheet" href="./studio-v2.css">
+  <link rel="stylesheet" href="./skin-menu.css">
+</head>
+<body>
+  <div id="skin-root">
+    <header class="toolbar" id="toolbar">
+      <div class="studio-toolbar-actions">
+        <button id="system-menu" class="brand" type="button">Audcore</button>
+        <button id="channel-list" type="button" aria-label="通道">☷</button>
+        <button id="add-channel" type="button" aria-label="新建通道">＋</button>
+        <button id="transport" type="button" disabled>▶</button>
+      </div>
+      <div class="studio-toolbar-readouts">
+        <output id="audio-status" aria-live="polite"></output>
+        <div id="window-drag" class="window-drag"></div>
+      </div>
+      <div class="studio-toolbar-window">
+        <button id="performance" type="button">性能</button>
+        <button id="settings" type="button">设置</button>
+        <button id="window-minimize" type="button" aria-label="最小化">−</button>
+        <button id="window-maximize" type="button" aria-label="最大化">□</button>
+        <button id="window-close" type="button" aria-label="关闭窗口">×</button>
+      </div>
+    </header>
+    <nav class="studio-sidebar" aria-labelledby="studio-channel-heading">
+      <h1 id="studio-channel-heading">通道</h1>
+      <div id="studio-channel-nav"></div>
+    </nav>
+    <main>
+      <div id="channels" aria-label="通道"></div>
+      <p id="studio-empty" hidden></p>
+    </main>
+    <div id="status" role="status" aria-live="polite"></div>
+  </div>
+  <div class="resize-area" data-resize="north" aria-hidden="true"></div>
+  <div class="resize-area" data-resize="south" aria-hidden="true"></div>
+  <div class="resize-area" data-resize="east" aria-hidden="true"></div>
+  <div class="resize-area" data-resize="west" aria-hidden="true"></div>
+  <div class="resize-area" data-resize="northEast" aria-hidden="true"></div>
+  <div class="resize-area" data-resize="northWest" aria-hidden="true"></div>
+  <div class="resize-area" data-resize="southEast" aria-hidden="true"></div>
+  <div class="resize-area" data-resize="southWest" aria-hidden="true"></div>
+  <script type="module" src="./page.mjs"></script>
+</body>
+</html>
