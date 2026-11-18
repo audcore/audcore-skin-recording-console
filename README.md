@@ -32,7 +32,8 @@
 ```sh
 git clone https://github.com/audcore/audcore-skin-recording-console.git
 cd audcore-skin-recording-console
-node --test tools/build-package.test.mjs web/studio-v2.test.mjs
+node --test tools/build-package.test.mjs
+node --test web/studio-v2.test.mjs
 node tools/build-package.mjs . dist
 ```
 
